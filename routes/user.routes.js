@@ -6,15 +6,13 @@ function userRoutes(req, res) {
             userController.getAllUser(req, res);
             break;
         case 'POST':
-            // Handle POST request
-            res.send('POST user');
+            userController.createUser(req, res);
             break;
         case 'PUT':
-            // Handle PUT request
-            res.send('PUT user');
+            userController.updateUser(req, res);
             break;
         case 'DELETE':
-            // Handle DELETE request
+            userController.deleteUser(req, res);
             res.send('DELETE user');
             break;
         default:

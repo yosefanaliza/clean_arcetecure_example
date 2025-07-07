@@ -1,4 +1,5 @@
-import { userRoutes, postsRoutes } from './user.routes.js';
+import { userRoutes } from './user.routes.js';
+import { postsRoutes } from './post.routes.js';
 
 export function router(req, res) {
     switch (req.url) {
