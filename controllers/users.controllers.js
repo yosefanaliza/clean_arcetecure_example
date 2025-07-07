@@ -1,0 +1,54 @@
+import * as userService from '../services/user.services.js';
+
+// Get all users
+export async function getAllUser(req, res) {
+    try {
+        const users = await userService.getAllUsers();
+        res.json(users);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
+
+// Get user by name
+export async function getUserByName(req, res) {
+    try {
+        const user = await userService.getUserByName(req.params.name);
+        if (!user) return res.status(404).json({ message: 'User not found' });
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
+
+// Create new user
+export async function createUser(req, res) {
+    try {
+        const newUser = await userService.createUser(req.body);
+        res.status(201).json(newUser);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+}
+
+// Update user
+export async function updateUser(req, res) {
+    try {
+        const updatedUser = await userService.updateUser(req.params.name, req.body);
+        if (!updatedUser) return res.status(404).json({ message: 'User not found' });
+        res.json(updatedUser);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+}
+
+// Delete user
+export async function deleteUser(req, res) {
+    try {
+        const deleted = await userService.deleteUser(req.params.name);
+        if (!deleted) return res.status(404).json({ message: 'User not found' });
+        res.json({ message: 'User deleted' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
