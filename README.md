@@ -2,6 +2,23 @@
 
 A modular Node.js application for managing users, posts, players, and riddles using a simple file-based database. The project demonstrates clean separation of concerns with controllers, services, and data-access layers.
 
+## Layered Architecture
+
+### 1. Routes
+Defines the HTTP endpoints and maps them to controller functions. Each resource (users, posts, etc.) has its own Express router for clean separation.
+
+### 2. Controllers
+Handle incoming HTTP requests, call the appropriate service functions, and send responses. Controllers are responsible for request/response logic and error handling.
+
+### 3. Services
+Contain the business logic, validation, and data processing for each resource. Services act as an intermediary between controllers and data-access, ensuring data integrity and applying business rules.
+
+### 4. Data-Access
+Responsible for reading and writing data to the file system (or database). Data-access modules provide CRUD operations for each resource, using shared helpers for file operations.
+
+### 5. Models
+Define the structure and behavior of domain entities (e.g., User, Player). Models are used to create and manipulate resource objects throughout the app.
+
 ## Features
 - User CRUD operations with validation, filtering, and sorting
 - Post creation and retrieval

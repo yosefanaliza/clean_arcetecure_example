@@ -5,7 +5,10 @@ import postRoutes from './src/routes/post.routes.js';
 const app = express();
 app.use(express.json());
 
+// users routes
 app.use('/users', userRoutes);
+
+//posts routes
 app.use('/posts', postRoutes);
 
 // Error handling middleware
