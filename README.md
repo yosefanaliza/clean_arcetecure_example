@@ -4,6 +4,28 @@ A modular Node.js application for managing users, posts, players, and riddles us
 
 ## Layered Architecture
 
+```
+        +-------------------+
+        |     Routes        |
+        +-------------------+
+                 |
+        +-------------------+
+        |   Controllers     |
+        +-------------------+
+                 |
+        +-------------------+
+        |     Services      |
+        +-------------------+
+                 |
+        +-------------------+
+        |   Data-Access     |
+        +-------------------+
+                 |
+        +-------------------+
+        |     Models        |
+        +-------------------+
+```
+
 ### 1. Routes
 Defines the HTTP endpoints and maps them to controller functions. Each resource (users, posts, etc.) has its own Express router for clean separation.
 
