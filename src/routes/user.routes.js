@@ -12,8 +12,8 @@ router.post('/', userController.createUser);
 // GET, '/users/:name'
 router.get('/:name', userController.getUserByName);
 
-// UPDATE '/users/:name'
-router.update('/:name', userController.updateUser);
+// PUT '/users/:name'
+router.put('/:name', userController.updateUser);
 
 // DELETE '/users/:name'
 router.delete('/:name', userController.deleteUser);

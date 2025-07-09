@@ -4,9 +4,9 @@ import * as userService from '../services/user.services.js';
 export const getAllUser = async (req, res) => {
     try {
         const users = await userService.getAllUsers(req.query);
-        res.json(users);
+        return res.json(users);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        return res.status(500).json({ message: err.message });
     }
 };
 
