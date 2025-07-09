@@ -1,16 +1,10 @@
+import express from 'express';
 import * as postController from '../controllers/posts.controllers.js';
 
-function postRoutes(req, res) {
-    switch (req.method) {
-        case 'GET':
-            postController.getAllPosts(req, res);
-            break;
-        case 'POST':
-            postController.createPost(req, res);
-            break;
-        default:
-            res.status(405).send('Method Not Allowed');
-    }
-}
+const router = express.Router();
 
-export default postRoutes;
+router.get('/', postController.getAllPosts);
+router.post('/', postController.createPost);
+// Add more post routes as needed
+
+export default router;

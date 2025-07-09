@@ -1,20 +1,12 @@
+import asyncHandler from 'express-async-handler';
 import { createPostService, getAllPostsService } from '../services/post.services.js';
 
-export function createPost(req, res) {
-    try {
-        const post = req.body;
-        const created = createPostService(post);
-        res.status(201).json(created);
-    } catch (err) {
-        res.status(500).json({ error: 'Failed to create post' });
-    }
-}
+export const createPost = asyncHandler(async (req, res) => {
+    const created = createPostService(req.body);
+    res.status(201).json(created);
+});
 
-export function getAllPosts(req, res) {
-    try {
-        const posts = getAllPostsService();
-        res.json(posts);
-    } catch (err) {
-        res.status(500).json({ error: 'Failed to get posts' });
-    }
-}
+export const getAllPosts = asyncHandler(async (req, res) => {
+    const posts = getAllPostsService(req.query);
+    res.json(posts);
+});
